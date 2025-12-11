@@ -1,0 +1,5 @@
+<map id="PTManager::ProcessManager::waitForAll" name="PTManager::ProcessManager::waitForAll">
+<area shape="rect" id="Node000001" title="Waits for all managed processes to terminate." alt="" coords="5,5,216,45"/>
+<area shape="rect" id="Node000002" href="$classPTManager_1_1ProcessManager.html#a209cf44b6aa2eff75b50c5d87e5d2dfb" title="Waits for a specific process to terminate and retrieves its exit status." alt="" coords="264,5,475,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,23,251,23,251,28,216,28"/>
+</map>
