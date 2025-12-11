@@ -503,3 +503,17 @@ $(OBJ_DIR)/%.d: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
 
 $(OBJ_DIR)/%.d: $(TEST_DIR)/%.cpp | $(BUILD_DIR)
 	@$(CXX) $(CXXFLAGS) $(INCLUDES) -MM -MT $(@:.d=.o) $< > $@
+
+
+docs:
+	doxygen Doxyfile
+	@echo "Documentation generated in doc/html/index.html"
+
+docs-open: docs
+	#open docs/html/index.html  # macOS
+	 xdg-open docs/html/index.html  # Linux/FreeBSD
+
+docs-clean:
+	rm -rf docs/
+
+.PHONY: docs docs-open docs-clean
