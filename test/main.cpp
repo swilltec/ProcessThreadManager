@@ -42,9 +42,9 @@ void testProcessManagement() {
     ProcessManager pm;
 
     std::cout << "\n--- Creating worker processes ---" << std::endl;
-    pid_t p1 = pm.createProcess("Worker-1", []() { return workerProcess(1, 2); });
+    pm.createProcess("Worker-1", []() { return workerProcess(1, 2); });
     pid_t p2 = pm.createProcess("Worker-2", []() { return workerProcess(2, 1); });
-    pid_t p3 = pm.createProcess("Worker-3", []() { return workerProcess(3, 3); });
+    pm.createProcess("Worker-3", []() { return workerProcess(3, 3); });
 
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
     pm.printAllProcesses();
