@@ -1,0 +1,5 @@
+<map id="PTManager::NamedPipe::remove" name="PTManager::NamedPipe::remove">
+<area shape="rect" id="Node000001" title="Removes the named pipe from the filesystem." alt="" coords="232,5,411,45"/>
+<area shape="rect" id="Node000002" href="$classPTManager_1_1NamedPipe.html#afeed17b0e07f7af7e32dc9b736e4e83b" title="Destructor that ensures cleanup of named pipe resources." alt="" coords="5,5,184,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,28,184,28,184,23,218,23"/>
+</map>

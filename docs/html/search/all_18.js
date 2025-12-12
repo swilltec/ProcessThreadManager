@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['safe_20components_0',['Thread-Safe Components',['../index.html#autotoc_md54',1,'']]],
+  ['safe_20use_20mutexes_1',['Not Thread-Safe (Use Mutexes)',['../index.html#autotoc_md55',1,'']]],
+  ['safelockguard_2',['safelockguard',['../classPTManager_1_1SafeLockGuard.html',1,'PTManager::SafeLockGuard'],['../classPTManager_1_1SafeLockGuard.html#aba74c380ec131e9d0670a7b60360f630',1,'PTManager::SafeLockGuard::SafeLockGuard(SafeMutex &amp;m)'],['../classPTManager_1_1SafeLockGuard.html#a9b468c485bf13cc19ad32dc9d6075a1e',1,'PTManager::SafeLockGuard::SafeLockGuard(const SafeLockGuard &amp;)=delete']]],
+  ['safemutex_3',['safemutex',['../classPTManager_1_1SafeMutex.html',1,'PTManager::SafeMutex'],['../classPTManager_1_1SafeMutex.html#a3382e483a8931301b9eca268f1c4a7c2',1,'PTManager::SafeMutex::SafeMutex()']]],
+  ['safety_4',['🔒 Thread Safety',['../index.html#autotoc_md53',1,'']]],
+  ['scenario_5',['Deadlock Scenario',['../index.html#autotoc_md46',1,'']]],
+  ['semaphore_6',['semaphore',['../index.html#autotoc_md35',1,'Example 5: Producer-Consumer with Semaphore'],['../classPTManager_1_1Semaphore.html',1,'PTManager::Semaphore'],['../classPTManager_1_1Semaphore.html#a83f611f28730d1a62d1c1b5ccd9f4b3e',1,'PTManager::Semaphore::Semaphore()']]],
+  ['send_7',['send',['../classPTManager_1_1MessageQueue.html#a278dbc43ad33c2760b6f1a9682dc01f0',1,'PTManager::MessageQueue']]],
+  ['setready_8',['setReady',['../classPTManager_1_1ConditionVariable.html#a2f83278155bb1deb23190c3b3bef298c',1,'PTManager::ConditionVariable']]],
+  ['shared_20memory_9',['Example 4: Shared Memory',['../index.html#autotoc_md34',1,'']]],
+  ['sharedmemory_10',['sharedmemory',['../classPTManager_1_1SharedMemory.html#af5f7b4b4cf66f87f288c4cd06709cd72',1,'PTManager::SharedMemory::SharedMemory()'],['../classPTManager_1_1SharedMemory.html',1,'PTManager::SharedMemory']]],
+  ['shutdown_11',['shutdown',['../classPTManager_1_1ThreadPool.html#ae004762ad5037ada879adfb98c1ffe20',1,'PTManager::ThreadPool']]],
+  ['sizing_12',['Thread Pool Sizing',['../index.html#autotoc_md58',1,'']]],
+  ['spinlock_13',['spinlock',['../classPTManager_1_1SpinLock.html#af5d00d816249a1551b23c4dd12c921d4',1,'PTManager::SpinLock::SpinLock()'],['../classPTManager_1_1SpinLock.html',1,'PTManager::SpinLock']]],
+  ['stack_14',['Technology Stack',['../md_ABOUT.html#autotoc_md83',1,'']]],
+  ['state_15',['state',['../classPTManager_1_1Process.html#a605e33dd6f16ebdf08e1222e79662d63',1,'PTManager::Process']]],
+  ['structure_16',['structure',['../index.html#autotoc_md17',1,'🏗️ Project Structure'],['../index.html#autotoc_md15',1,'1. Clone or Create Project Structure']]],
+  ['style_17',['Code Style',['../index.html#autotoc_md69',1,'']]],
+  ['support_18',['📞 Support',['../index.html#autotoc_md78',1,'']]],
+  ['synchronization_19',['4. Synchronization',['../index.html#autotoc_md29',1,'']]],
+  ['synchronization_20primitives_20',['synchronization primitives',['../index.html#autotoc_md52',1,'Synchronization Primitives'],['../index.html#autotoc_md7',1,'Synchronization Primitives']]],
+  ['synchronization_2ecpp_21',['Synchronization.cpp',['../Synchronization_8cpp.html',1,'']]],
+  ['synchronization_2eh_22',['Synchronization.h',['../Synchronization_8h.html',1,'']]]
+];

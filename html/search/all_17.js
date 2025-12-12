@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['race_20conditions_0',['Race Conditions',['../index.html#autotoc_md45',1,'']]],
+  ['read_1',['read',['../classPTManager_1_1Pipe.html#a0aa313c0bcf70896cfe6a1ec622db0ce',1,'PTManager::Pipe::read()'],['../classPTManager_1_1NamedPipe.html#adeea2a4b75d738456c856dc5ec414e92',1,'PTManager::NamedPipe::read()']]],
+  ['readdata_2',['readData',['../classPTManager_1_1SharedMemory.html#a2b34d05d6a4cc71080f1581a5ebe782a',1,'PTManager::SharedMemory']]],
+  ['reader_20writer_20lock_3',['Example 6: Reader-Writer Lock',['../index.html#autotoc_md36',1,'']]],
+  ['reading_4',['Recommended Reading',['../index.html#autotoc_md74',1,'']]],
+  ['readlock_5',['readLock',['../classPTManager_1_1RWLock.html#acd233e3c485b50a9dc21cf7e52951159',1,'PTManager::RWLock']]],
+  ['readme_2emd_6',['README.md',['../README_8md.html',1,'']]],
+  ['readstring_7',['readstring',['../classPTManager_1_1Pipe.html#af95d0ecfb875cf8cd3c10a8af2a4c91c',1,'PTManager::Pipe::readString()'],['../classPTManager_1_1NamedPipe.html#a2984118e799800a9d6d9a3aba8794c8e',1,'PTManager::NamedPipe::readString()']]],
+  ['readunlock_8',['readUnlock',['../classPTManager_1_1RWLock.html#ab9a5b5fee083bbf87b8c6ada9cedf4e0',1,'PTManager::RWLock']]],
+  ['ready_9',['READY',['../namespacePTManager.html#a874d5aaafbe35905f1ae5754b3fc7238a2baa69eafc7204f3bd8648eba580c489',1,'PTManager']]],
+  ['receive_10',['receive',['../classPTManager_1_1MessageQueue.html#a914695ba706134195cb727201236546a',1,'PTManager::MessageQueue']]],
+  ['recommended_20reading_11',['Recommended Reading',['../index.html#autotoc_md74',1,'']]],
+  ['reference_12',['📖 API Reference',['../index.html#autotoc_md48',1,'']]],
+  ['related_20topics_13',['Related Topics',['../index.html#autotoc_md76',1,'']]],
+  ['remove_14',['remove',['../classPTManager_1_1NamedPipe.html#a2adb6ea2366007310a10520fd1b45fb6',1,'PTManager::NamedPipe::remove()'],['../classPTManager_1_1MessageQueue.html#a96e39a1350938441eac5a7010c6100f0',1,'PTManager::MessageQueue::remove()']]],
+  ['required_15',['Required',['../index.html#autotoc_md9',1,'']]],
+  ['reset_16',['reset',['../classPTManager_1_1Barrier.html#a1c72359852e265b31d57a2ff4ac8c28f',1,'PTManager::Barrier']]],
+  ['resource_20management_17',['5. Resource Management',['../index.html#autotoc_md43',1,'']]],
+  ['resources_18',['resources',['../index.html#autotoc_md73',1,'📚 Additional Resources'],['../index.html#autotoc_md75',1,'Online Resources']]],
+  ['running_19',['running',['../namespacePTManager.html#a4aa770e8e28b70734204bfe840f54e96a43491564ebcfd38568918efbd6e840fd',1,'PTManager::RUNNING'],['../namespacePTManager.html#a874d5aaafbe35905f1ae5754b3fc7238a43491564ebcfd38568918efbd6e840fd',1,'PTManager::RUNNING']]],
+  ['running_20tests_20',['🧪 Running Tests',['../index.html#autotoc_md22',1,'']]],
+  ['runtime_20issues_21',['2. Runtime Issues',['../index.html#autotoc_md64',1,'']]],
+  ['rwlock_22',['rwlock',['../classPTManager_1_1RWLock.html',1,'PTManager::RWLock'],['../classPTManager_1_1RWLock.html#a3737b5afcd64d8e124209ec5762c148a',1,'PTManager::RWLock::RWLock()']]]
+];

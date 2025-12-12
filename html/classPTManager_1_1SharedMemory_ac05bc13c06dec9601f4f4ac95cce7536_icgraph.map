@@ -1,0 +1,5 @@
+<map id="PTManager::SharedMemory::unlink" name="PTManager::SharedMemory::unlink">
+<area shape="rect" id="Node000001" title="Removes the shared memory object from the system." alt="" coords="256,5,459,45"/>
+<area shape="rect" id="Node000002" href="$classPTManager_1_1SharedMemory.html#a7e4fb36e1befffd00f0e2830596f1f0c" title="Destructor that ensures complete cleanup of shared memory resources." alt="" coords="5,5,208,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,28,208,28,208,23,242,23"/>
+</map>
