@@ -20,4 +20,4 @@ target_include_directories(ptmanager PUBLIC
 
 # Test executable
 add_executable(test_manager test/main.cpp)
-target_link_libraries(test_manager ptmanager pthread rt)
+target_link_libraries(test_manager PUBLIC ptmanager pthread rt)

@@ -222,7 +222,10 @@ make docs-open  # Open documentation in browser
 
 ```bash
 # Run tests directly
-make test
+make test-all
+
+# Or Run 
+make run
 
 # Or run executable
 ./test_manager
