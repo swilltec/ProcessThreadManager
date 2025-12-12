@@ -1,6 +1,6 @@
-# Process and Thread Management Library for FreeBSD
+# Process and Thread Management Library
 
-A comprehensive C++ library demonstrating process management, thread pooling, inter-process communication (IPC), and synchronization primitives for FreeBSD/Unix environments.
+A comprehensive C++ library demonstrating process management, thread pooling, inter-process communication (IPC), and synchronization primitives for Unix environments.
 
 ## 📋 Table of Contents
 

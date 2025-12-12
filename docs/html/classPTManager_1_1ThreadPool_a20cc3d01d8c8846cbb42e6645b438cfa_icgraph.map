@@ -1,5 +1,0 @@
-<map id="PTManager::ThreadPool::getQueuedTasks" name="PTManager::ThreadPool::getQueuedTasks">
-<area shape="rect" id="Node000001" title="Returns the number of tasks waiting in the queue." alt="" coords="229,5,405,45"/>
-<area shape="rect" id="Node000002" href="$classPTManager_1_1ThreadPool.html#abd4d4e314563fbb768468b5985348501" title="Prints a comprehensive status report of the thread pool." alt="" coords="5,5,181,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,28,182,28,182,23,215,23"/>
-</map>

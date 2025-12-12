@@ -1,8 +1,0 @@
-<map id="PTManager::SharedMemory::close" name="PTManager::SharedMemory::close">
-<area shape="rect" id="Node000001" title="Closes the file descriptor." alt="" coords="256,37,459,77"/>
-<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="400,26,385,19,357,16,333,18,318,23,313,29,316,36,311,38,308,28,315,18,332,13,357,11,386,14,402,21"/>
-<area shape="rect" id="Node000002" href="$classPTManager_1_1SharedMemory.html#a7e4fb36e1befffd00f0e2830596f1f0c" title="Destructor that ensures complete cleanup of shared memory resources." alt="" coords="5,5,208,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,45,208,41,208,36,243,40"/>
-<area shape="rect" id="Node000003" href="$classPTManager_1_1SharedMemory.html#a30e3c910f4c62c1af3319b21f46cb5dc" title="Creates a new shared memory object." alt="" coords="5,69,208,109"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="243,75,208,79,208,74,242,69"/>
-</map>

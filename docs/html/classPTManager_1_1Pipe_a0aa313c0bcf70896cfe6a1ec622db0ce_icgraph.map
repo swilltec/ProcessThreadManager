@@ -1,5 +1,0 @@
-<map id="PTManager::Pipe::read" name="PTManager::Pipe::read">
-<area shape="rect" id="Node000001" title="Reads raw binary data from the pipe." alt="" coords="260,5,428,31"/>
-<area shape="rect" id="Node000002" href="$classPTManager_1_1Pipe.html#af95d0ecfb875cf8cd3c10a8af2a4c91c" title="Reads a length&#45;prefixed string from the pipe." alt="" coords="5,5,212,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,21,212,21,212,15,246,15"/>
-</map>

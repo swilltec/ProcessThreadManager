@@ -1,5 +1,0 @@
-<map id="PTManager::NamedPipe::writeString" name="PTManager::NamedPipe::writeString">
-<area shape="rect" id="Node000001" title="Writes a string with length&#45;prefixed protocol." alt="" coords="5,5,184,45"/>
-<area shape="rect" id="Node000002" href="$classPTManager_1_1NamedPipe.html#a5569483647ce661a6f1e8fba6176e6ff" title="Writes raw binary data to the named pipe." alt="" coords="232,5,411,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,23,218,23,218,28,185,28"/>
-</map>

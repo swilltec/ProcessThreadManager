@@ -1,5 +1,0 @@
-<map id="PTManager::ThreadPool::~ThreadPool" name="PTManager::ThreadPool::~ThreadPool">
-<area shape="rect" id="Node000001" title="Destructor that ensures graceful shutdown of the thread pool." alt="" coords="5,5,181,45"/>
-<area shape="rect" id="Node000002" href="$classPTManager_1_1ThreadPool.html#ae004762ad5037ada879adfb98c1ffe20" title="Gracefully shuts down the thread pool." alt="" coords="229,5,405,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,23,215,23,215,28,182,28"/>
-</map>

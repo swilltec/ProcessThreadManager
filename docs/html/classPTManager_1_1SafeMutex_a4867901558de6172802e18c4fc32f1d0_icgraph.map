@@ -1,5 +1,0 @@
-<map id="PTManager::SafeMutex::getName" name="PTManager::SafeMutex::getName">
-<area shape="rect" id="Node000001" title=" " alt="" coords="255,5,428,45"/>
-<area shape="rect" id="Node000002" href="$classPTManager_1_1SafeLockGuard.html#aba74c380ec131e9d0670a7b60360f630" title="RAII wrapper that acquires a SafeMutex and automatically releases it." alt="" coords="5,5,207,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="241,28,207,28,207,23,241,23"/>
-</map>

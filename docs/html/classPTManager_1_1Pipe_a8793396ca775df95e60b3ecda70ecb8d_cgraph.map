@@ -1,9 +1,0 @@
-<map id="PTManager::Pipe::closeWrite" name="PTManager::Pipe::closeWrite">
-<area shape="rect" id="Node000001" title="Closes the write end of the pipe." alt="" coords="5,5,213,31"/>
-<area shape="rect" id="Node000002" href="$classPTManager_1_1Pipe.html#a5159b1c006314fab38b7e918c67f6a36" title="Closes both ends of the pipe and marks it as closed." alt="" coords="261,5,435,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,24,248,24,248,30,213,30"/>
-<area shape="poly" id="edge4_Node000002_Node000001" title=" " alt="" coords="261,12,227,12,227,6,261,7"/>
-<area shape="rect" id="Node000003" href="$classPTManager_1_1Pipe.html#ac03d23579ae8cda1fa07ac94bd370af2" title="Closes the read end of the pipe." alt="" coords="483,5,689,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="435,24,469,24,469,30,435,29"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="482,12,448,12,448,6,482,6"/>
-</map>
