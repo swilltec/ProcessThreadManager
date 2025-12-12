@@ -1,0 +1,5 @@
+<map id="PTManager::SafeLockGuard::~SafeLockGuard" name="PTManager::SafeLockGuard::~SafeLockGuard">
+<area shape="rect" id="Node000001" title="Destructor that releases the mutex if it was successfully locked." alt="" coords="5,5,207,45"/>
+<area shape="rect" id="Node000002" href="$classPTManager_1_1SafeMutex.html#a7c496f382b87dda13cc2af7634fd0cba" title="Releases the mutex." alt="" coords="255,5,428,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,23,241,23,241,28,207,28"/>
+</map>

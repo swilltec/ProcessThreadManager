@@ -1,0 +1,11 @@
+<map id="PTManager::Pipe::~Pipe" name="PTManager::Pipe::~Pipe">
+<area shape="rect" id="Node000001" title="Destructor that ensures proper cleanup of pipe resources." alt="" coords="5,31,184,56"/>
+<area shape="rect" id="Node000002" href="$classPTManager_1_1Pipe.html#a5159b1c006314fab38b7e918c67f6a36" title="Closes both ends of the pipe and marks it as closed." alt="" coords="232,31,405,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,41,218,41,218,46,184,46"/>
+<area shape="rect" id="Node000003" href="$classPTManager_1_1Pipe.html#ac03d23579ae8cda1fa07ac94bd370af2" title="Closes the read end of the pipe." alt="" coords="454,5,661,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="405,40,494,30,494,35,406,45"/>
+<area shape="rect" id="Node000004" href="$classPTManager_1_1Pipe.html#a8793396ca775df95e60b3ecda70ecb8d" title="Closes the write end of the pipe." alt="" coords="453,55,661,80"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="371,53,440,62,439,67,370,59"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="454,23,383,31,382,26,453,17"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="505,57,419,47,419,42,506,52"/>
+</map>
