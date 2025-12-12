@@ -1,14 +1,19 @@
-# Process and Thread Management Library
+# ProcessThreadManager
 
-A comprehensive C++ library demonstrating process management, thread pooling, inter-process communication (IPC), and synchronization primitives for Unix environments.
+A modern C++20 library for process and thread management on Unix systems, demonstrating advanced operating system concepts including process lifecycle management, thread pooling, inter-process communication (IPC), and synchronization primitives.
+
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://swilltec.github.io/ProcessThreadManager/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)](https://en.cppreference.com/w/cpp/20)
+[![POSIX](https://img.shields.io/badge/platform-POSIX-orange.svg)](https://pubs.opengroup.org/onlinepubs/9699919799/)
 
 ## 📋 Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
+- [Documentation](#documentation)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Project Structure](#project-structure)
 - [Building](#building)
 - [Running Tests](#running-tests)
 - [Library Components](#library-components)
@@ -21,154 +26,164 @@ A comprehensive C++ library demonstrating process management, thread pooling, in
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
 - [License](#license)
+- [Additional Resources](#additional-resources)
 
 ## 🎯 Overview
 
-This project implements a user-level library for managing processes and threads in FreeBSD, focusing on:
+ProcessThreadManager is a comprehensive C++20 library that provides a robust framework for:
 
-- **Process lifecycle management** - Creation, monitoring, and termination
-- **Thread pooling** - Efficient worker thread reuse and task scheduling
-- **Inter-process communication** - Multiple IPC mechanisms (pipes, shared memory)
-- **Synchronization primitives** - Thread-safe operations with mutexes, semaphores, and more
-- **Concurrency control** - Race condition prevention and deadlock detection
+- **Process lifecycle management** - Create, monitor, and control child processes with full state tracking
+- **Thread pooling** - Efficient task execution using a fixed pool of worker threads
+- **Inter-process communication** - Multiple IPC mechanisms for process coordination
+- **Synchronization primitives** - Thread-safe operations with deadlock detection and prevention
+- **Concurrency control** - Race condition prevention and resource management
+
+The library follows modern C++ best practices and leverages C++20 features for type safety and performance.
 
 ## ✨ Features
 
 ### Process Management
-- ✅ Create and manage multiple processes with fork()
+- ✅ Create and manage multiple child processes using `fork()`
 - ✅ Track process states (CREATED, RUNNING, BLOCKED, READY, TERMINATED)
-- ✅ Wait for process completion with status codes
-- ✅ Graceful termination (SIGTERM) and forced kill (SIGKILL)
-- ✅ Process information and state monitoring
+- ✅ Wait for process completion with exit status retrieval
+- ✅ Graceful shutdown (SIGTERM) with forceful fallback (SIGKILL)
+- ✅ Comprehensive process information and state monitoring
+- ✅ Automatic zombie process prevention
 
 ### Thread Pool
-- ✅ Fixed-size worker thread pool for resource efficiency
-- ✅ Task queue with automatic distribution
-- ✅ Future-based asynchronous result retrieval
+- ✅ Fixed-size worker thread pool for optimal resource utilization
+- ✅ Task queue with automatic work distribution
+- ✅ Future-based asynchronous result retrieval with type safety
 - ✅ Thread state monitoring (IDLE, RUNNING, BLOCKED, TERMINATED)
-- ✅ Graceful shutdown with task completion
+- ✅ Graceful shutdown ensuring task completion
+- ✅ Exception handling within worker threads
 
 ### Inter-Process Communication (IPC)
-- ✅ **Unnamed Pipes** - Fast parent-child communication
-- ✅ **Named Pipes (FIFO)** - Filesystem-based process communication
+- ✅ **Unnamed Pipes** - Fast unidirectional parent-child communication
+- ✅ **Named Pipes (FIFO)** - Filesystem-based bidirectional process communication
 - ✅ **Shared Memory** - High-performance memory sharing via POSIX shm
-- ✅ **Message Queues** - Structured message passing (System V IPC)
+- ✅ **Message Queues** - Structured message passing using System V IPC
 
 ### Synchronization Primitives
-- ✅ **SafeMutex** - Mutex with deadlock detection and timeout
+- ✅ **SafeMutex** - Mutex wrapper with deadlock detection and configurable timeout
+- ✅ **SafeLockGuard** - RAII-based lock management
 - ✅ **Semaphore** - POSIX semaphore wrapper for resource counting
-- ✅ **Reader-Writer Lock** - Multiple readers, exclusive writer access
-- ✅ **Barrier** - Synchronization point for multiple threads
-- ✅ **Condition Variables** - Thread signaling and coordination
-- ✅ **SpinLock** - Low-latency busy-wait locking
+- ✅ **Reader-Writer Lock** - Multiple concurrent readers, exclusive writer access
+- ✅ **Barrier** - Synchronization point for coordinating multiple threads
+- ✅ **Condition Variables** - Thread signaling with predicate support
+- ✅ **SpinLock** - Low-latency busy-wait locking for short critical sections
+
+## 📚 Documentation
+
+**Full API documentation is available at:** [https://swilltec.github.io/ProcessThreadManager/](https://swilltec.github.io/ProcessThreadManager/)
+
+The documentation includes:
+- Detailed class descriptions
+- Method signatures and parameters
+- Usage examples and best practices
+- Architecture diagrams
+- Performance considerations
+
+### Quick Links
+- [API Reference](https://swilltec.github.io/ProcessThreadManager/annotated.html)
+- [Class List](https://swilltec.github.io/ProcessThreadManager/classes.html)
+- [File Documentation](https://swilltec.github.io/ProcessThreadManager/files.html)
 
 ## 📦 Prerequisites
 
 ### Required
 - **Operating System**: FreeBSD 11.0+ (or Linux/macOS with POSIX support)
-- **Compiler**: g++ 7.0+ or clang++ 5.0+ with C++17 support
-- **CMake**: 3.15 or higher
-- **Libraries**: pthread, rt (realtime extensions)
+- **Compiler**: 
+  - g++ 10.0+ with C++20 support, or
+  - clang++ 10.0+ with C++20 support
+- **Build System**: Make
+- **Libraries**: 
+  - pthread (POSIX threads)
+  - rt (realtime extensions)
 
 ### Optional
-- **Git**: For version control
-- **Make**: Build automation (installed with CMake)
+- **Doxygen** - For generating documentation locally
+- **Graphviz** - For documentation diagrams
+- **Valgrind** - For memory leak detection (Linux)
+- **GDB** - For debugging
 
 ### FreeBSD Installation
 ```bash
 # Install required packages
-pkg install cmake gcc git
+sudo pkg install gcc gmake git
 
-# Or use system clang (already installed)
-pkg install cmake git
+# Optional: Install documentation tools
+sudo pkg install doxygen graphviz
+
+# Optional: Install debugging tools
+sudo pkg install gdb
 ```
 
-### Linux (Ubuntu/Debian) Installation
+### Linux (Debian/Ubuntu) Installation
 ```bash
+# Update package list
 sudo apt-get update
-sudo apt-get install build-essential cmake git
 
+# Install build essentials
+sudo apt-get install build-essential git
 
-# Or use system clang (already installed)
+# Optional: Install documentation tools
+sudo apt-get install doxygen graphviz
 
-# Install CMake 3.15+ from Kitware (Optional)
-sudo curl -fsSL https://apt.kitware.com/keys/kitware-archive-latest.asc \
-  | sudo gpg --dearmor -o /usr/share/keyrings/kitware-archive-keyring.gpg
-
-echo "deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] \
-  https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main" \
-  | sudo tee /etc/apt/sources.list.d/kitware.list
-
-sudo apt update
-sudo apt install cmake
+# Optional: Install debugging tools
+sudo apt-get install gdb valgrind
 ```
 
 ### macOS Installation
 ```bash
-# Install Homebrew if not already installed
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Install Xcode Command Line Tools
+xcode-select --install
 
-# Install CMake
-brew install cmake
+# Optional: Install documentation tools with Homebrew
+brew install doxygen graphviz
 ```
 
 ## 🚀 Installation
 
-### 1. Clone or Create Project Structure
+### Clone the Repository
 
 ```bash
-# Create project directory
-mkdir process_thread_manager
-cd process_thread_manager
-
-# Create subdirectories
-mkdir -p include src test
+git clone https://github.com/swilltec/ProcessThreadManager.git
+cd ProcessThreadManager
 ```
 
-### 2. Copy Files
-
-Place the following files in their respective directories:
+### Project Structure
 
 ```
-process_thread_manager/
-├── CMakeLists.txt              # Build configuration
-├── README.md                   # This file
-├── include/
-│   ├── ProcessManager.h      # Process management header
-│   ├── ThreadPool.h          # Thread pool header
-│   ├── IPC.h                 # IPC mechanisms header
-│   └── Synchronization.h     # Synchronization primitives header
-├── src/
-│   ├── ProcessManager.cpp      # Process management implementation
-│   ├── ThreadPool.cpp          # Thread pool implementation
-│   ├── IPC.cpp                 # IPC implementation
-│   └── Synchronization.cpp     # Synchronization implementation
-└── test/
-    └── main.cpp                # Test suite
-```
-
-## 🏗️ Project Structure
-
-```
-process_thread_manager/
+ProcessThreadManager/
 │
-├── CMakeLists.txt              # CMake build configuration
-├── README.md                   # Documentation (this file)
+├── Makefile                    # Build configuration
+├── Doxyfile                    # Documentation generation config
+├── README.md                   # This file
+├── ABOUT.md                    # Project information
 │
 ├── include/                    # Public header files
-│   ├── ProcessManager.h      # Process creation and lifecycle management
-│   ├── ThreadPool.h          # Thread pool with task queue
-│   ├── IPC.h                 # Inter-process communication classes
-│   └── Synchronization.h     # Thread synchronization primitives
+│   ├── ProcessManager.h        # Process lifecycle management
+│   ├── ThreadPool.h            # Thread pool with task queue
+│   ├── IPC.h                   # Inter-process communication
+│   └── Synchronization.h       # Synchronization primitives
 │
 ├── src/                        # Implementation files
 │   ├── ProcessManager.cpp      # Process management implementation
 │   ├── ThreadPool.cpp          # Thread pool implementation
 │   ├── IPC.cpp                 # IPC mechanisms implementation
-│   └── Synchronization.cpp     # Synchronization primitives implementation
+│   └── Synchronization.cpp     # Synchronization implementation
 │
-└── test/                       # Test suite
-    └── main.cpp                # Comprehensive test program with menu
+├── test/                       # Test suite
+│   └── main.cpp                # Comprehensive test program
+│
+├── build/                      # Build artifacts (generated)
+│   ├── obj/                    # Object files
+│   └── test_manager            # Compiled executable
+│
+└── docs/                       # Generated documentation (via Doxygen)
+    └── html/
+        └── index.html          # Documentation entry point
 ```
 
 ## 🔨 Building
@@ -176,40 +191,80 @@ process_thread_manager/
 ### Quick Build
 
 ```bash
-# From project root directory
-mkdir build && cd build
-cmake ..
+# Build the project
 make
 
-# Or use make with parallel jobs
+# Build with parallel jobs for faster compilation
 make -j$(nproc)  # Linux
 make -j$(sysctl -n hw.ncpu)  # FreeBSD/macOS
 ```
 
-### Build Options
+### Available Make Targets
 
 ```bash
-# Debug build (with debug symbols)
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-make
+# Building
+make              # Build the project
+make all          # Same as make
+make rebuild      # Clean and rebuild
+make debug        # Build with debug symbols and run GDB
 
-# Release build (optimized)
-cmake -DCMAKE_BUILD_TYPE=Release ..
-make
+# Cleaning
+make clean        # Remove build artifacts
+make clean-ipc    # Clean IPC resources (shared memory, semaphores)
+make clean-all    # Clean everything
 
-# Clean build
-make clean
-rm -rf build/*
+# Running
+make run          # Build and run all tests
+make test1        # Run Process Management test
+make test2        # Run Thread Pool test
+make test3        # Run IPC test
+make test4        # Run Synchronization test
+make test5        # Run all tests sequentially
+
+# Debugging & Analysis
+make valgrind     # Run with Valgrind (memory checker)
+make check-leaks  # Check for memory leaks in all tests
+make asan         # Build and run with AddressSanitizer
+make tsan         # Build and run with ThreadSanitizer
+make ubsan        # Build and run with UBSanitizer
+
+# Documentation
+make docs         # Generate documentation with Doxygen
+make docs-open    # Generate and open documentation
+make docs-clean   # Remove generated documentation
+
+# Code Quality
+make format       # Format code with clang-format
+make lint         # Run clang-tidy linter
+make stats        # Show code statistics
+
+# Information
+make info         # Show project information
+make help         # Show all available targets
+```
+
+### Build Configuration
+
+The Makefile supports several build configurations:
+
+```bash
+# Compiler selection
+CXX=g++ make              # Use GCC (default)
+CXX=clang++ make          # Use Clang
+
+# Optimization levels
+CXXFLAGS="-O3" make       # Maximum optimization
+CXXFLAGS="-O0 -g" make    # No optimization, debug symbols
 ```
 
 ### Verify Build
 
 ```bash
-# After successful build, you should see:
-ls -l test_manager
+# Check if executable was created
+ls -l build/test_manager
 
 # Expected output:
--rwxr-xr-x  1 user  group  123456 Dec 11 12:00 test_manager
+-rwxr-xr-x  1 user  group  XXXXXX Dec 12 12:00 build/test_manager
 ```
 
 ## 🧪 Running Tests
@@ -218,9 +273,15 @@ ls -l test_manager
 
 ```bash
 # Run the test program
-./test_manager
+./build/test_manager
 
-# You'll see a menu:
+# Or use make
+make run
+```
+
+You'll see an interactive menu:
+
+```
 ╔════════════════════════════════════════╗
 ║  Process & Thread Management Library  ║
 ║           Test Suite                   ║
@@ -240,37 +301,49 @@ Choice: _
 ### Command-Line Mode
 
 ```bash
-# Run specific test directly
-./test_manager 1    # Test process management
-./test_manager 2    # Test thread pool
-./test_manager 3    # Test IPC mechanisms
-./test_manager 4    # Test synchronization
-./test_manager 5    # Run all tests
+# Run specific tests directly
+./build/test_manager 1    # Test process management
+./build/test_manager 2    # Test thread pool
+./build/test_manager 3    # Test IPC mechanisms
+./build/test_manager 4    # Test synchronization
+./build/test_manager 5    # Run all tests
 
-# Example output:
-./test_manager 1
+# Or use make targets
+make test1    # Process Management
+make test2    # Thread Pool
+make test3    # IPC
+make test4    # Synchronization
+make test-all # All tests sequentially
+```
+
+### Example Test Output
+
+```
 ========================================
   TEST 1: PROCESS MANAGEMENT
 ========================================
 Main process PID: 12345
-...
+Created process 'Worker-1' with PID: 12346
+Created process 'Worker-2' with PID: 12347
+Process 12346 (Worker-1) terminated with status: 0
+Process 12347 (Worker-2) terminated with status: 0
 ✓ Process management test completed
 ```
 
 ## 📚 Library Components
 
-### 1. ProcessManager
+### 1. ProcessManager (`include/ProcessManager.h`)
 
-Manages process creation, monitoring, and termination.
+Manages process creation, monitoring, and termination with full lifecycle tracking.
 
 **Key Classes:**
-- `Process` - Represents a single process with state tracking
-- `ProcessManager` - Manages multiple processes
+- `Process` - Represents a single process with metadata
+- `ProcessManager` - Centralized process management
 
 **Process States:**
 ```cpp
 enum class ProcessState {
-    CREATED,      // Just forked, not yet running
+    CREATED,      // Just created via fork()
     RUNNING,      // Currently executing
     BLOCKED,      // Waiting for I/O or resources
     READY,        // Ready to run
@@ -278,15 +351,22 @@ enum class ProcessState {
 };
 ```
 
-### 2. ThreadPool
+**Key Features:**
+- Automatic zombie process prevention
+- Signal-based termination (SIGTERM/SIGKILL)
+- Exit status tracking
+- Bulk operations (waitForAll, terminateAll)
 
-Implements a fixed-size pool of worker threads for task execution.
+### 2. ThreadPool (`include/ThreadPool.h`)
+
+Implements a fixed-size pool of worker threads with task queue management.
 
 **Key Features:**
-- Task queue with FIFO scheduling
+- Type-safe task submission via templates
 - Future-based result retrieval
-- Thread state monitoring
-- Graceful shutdown
+- Exception handling in worker threads
+- Graceful shutdown with task completion
+- Real-time thread state monitoring
 
 **Thread States:**
 ```cpp
@@ -298,863 +378,158 @@ enum class ThreadState {
 };
 ```
 
-### 3. IPC (Inter-Process Communication)
+### 3. IPC - Inter-Process Communication (`include/IPC.h`)
 
 **Available Mechanisms:**
 
-| Mechanism | Use Case | Performance | Complexity |
-|-----------|----------|-------------|------------|
-| **Unnamed Pipe** | Parent-child only | Fast | Simple |
-| **Named Pipe (FIFO)** | Any processes | Medium | Simple |
-| **Shared Memory** | High-throughput | Very Fast | Medium |
-| **Message Queue** | Structured data | Medium | Medium |
+| Mechanism | Latency | Throughput | Complexity | Use Case |
+|-----------|---------|------------|------------|----------|
+| **Unnamed Pipe** | ~1µs | High | Simple | Parent-child, moderate data |
+| **Named Pipe (FIFO)** | ~5µs | Medium | Simple | Unrelated processes |
+| **Shared Memory** | ~100ns | Very High | Medium | Large data, frequent access |
+| **Message Queue** | ~10µs | Medium | Medium | Structured messages |
 
-### 4. Synchronization
+**Classes:**
+- `Pipe` - Unnamed pipe for parent-child communication
+- `NamedPipe` - FIFO for any process communication
+- `SharedMemory` - POSIX shared memory wrapper
+- `MessageQueue` - System V message queue wrapper
+
+### 4. Synchronization (`include/Synchronization.h`)
 
 **Primitives Available:**
 
-| Primitive | Purpose | Use Case |
-|-----------|---------|----------|
-| **SafeMutex** | Mutual exclusion | Critical sections |
-| **Semaphore** | Resource counting | Producer-consumer |
-| **RWLock** | Reader-writer | Read-heavy workloads |
-| **Barrier** | Synchronization point | Parallel algorithms |
-| **ConditionVariable** | Thread signaling | Event notification |
-| **SpinLock** | Low-latency lock | Short critical sections |
+| Primitive | Purpose | Thread Safe | Overhead | Use Case |
+|-----------|---------|-------------|----------|----------|
+| **SafeMutex** | Mutual exclusion | ✅ Yes | Low | Critical sections |
+| **SafeLockGuard** | RAII mutex lock | ✅ Yes | Very Low | Automatic unlock |
+| **Semaphore** | Resource counting | ✅ Yes | Low | Producer-consumer |
+| **RWLock** | Reader-writer | ✅ Yes | Medium | Read-heavy workloads |
+| **Barrier** | Thread coordination | ✅ Yes | Medium | Parallel algorithms |
+| **ConditionVariable** | Thread signaling | ✅ Yes | Low | Event notification |
+| **SpinLock** | Busy-wait lock | ✅ Yes | Very Low | Short critical sections |
+
+**Key Features:**
+- Deadlock detection in SafeMutex
+- Timeout support
+- RAII-based resource management
+- Writer-preference in RWLock
 
 ## 💡 Usage Examples
 
-### Example 1: Create and Manage Processes
-
-```cpp
-#include "ProcessManager.h"
-
-int main() {
-    ProcessManager pm;
-    
-    // Create a worker process
-    pid_t pid = pm.createProcess("Worker-1", []() {
-        // Process work
-        std::cout << "Worker process running!" << std::endl;
-        sleep(2);
-        return 0;  // Exit code
-    });
-    
-    // Wait for completion
-    int status;
-    pm.waitForProcess(pid, &status);
-    std::cout << "Process exited with code: " << status << std::endl;
-    
-    return 0;
-}
-```
-
-### Example 2: Thread Pool with Tasks
-
-```cpp
-#include "ThreadPool.h"
-#include <iostream>
-
-int fibonacci(int n) {
-    if (n <= 1) return n;
-    int a = 0, b = 1;
-    for (int i = 2; i <= n; ++i) {
-        int temp = a + b;
-        a = b;
-        b = temp;
-    }
-    return b;
-}
-
-int main() {
-    // Create pool with 4 worker threads
-    ThreadPool pool(4);
-    
-    // Submit tasks and get futures
-    auto future1 = pool.enqueue(fibonacci, 30);
-    auto future2 = pool.enqueue(fibonacci, 35);
-    auto future3 = pool.enqueue([]() {
-        std::cout << "Lambda task executing" << std::endl;
-        return 42;
-    });
-    
-    // Get results
-    std::cout << "Fib(30) = " << future1.get() << std::endl;
-    std::cout << "Fib(35) = " << future2.get() << std::endl;
-    std::cout << "Lambda result = " << future3.get() << std::endl;
-    
-    return 0;
-}
-```
-
-### Example 3: Unnamed Pipe Communication
-
-```cpp
-#include "IPC.h"
-#include <unistd.h>
-
-int main() {
-    Pipe pipe;
-    
-    pid_t pid = fork();
-    
-    if (pid == 0) {
-        // Child process - reader
-        pipe.closeWrite();
-        std::string msg = pipe.readString();
-        std::cout << "Child received: " << msg << std::endl;
-        pipe.close();
-        exit(0);
-    } else {
-        // Parent process - writer
-        pipe.closeRead();
-        pipe.writeString("Hello from parent!");
-        pipe.close();
-        waitpid(pid, nullptr, 0);
-    }
-    
-    return 0;
-}
-```
-
-### Example 4: Shared Memory
-
-```cpp
-#include "IPC.h"
-#include <unistd.h>
-
-struct Data {
-    int id;
-    char message[256];
-};
-
-int main() {
-    const std::string shmName = "/my_shared_memory";
-    const size_t shmSize = sizeof(Data);
-    
-    pid_t pid = fork();
-    
-    if (pid == 0) {
-        // Child - reader
-        sleep(1);  // Wait for parent to write
-        
-        SharedMemory shm(shmName, shmSize);
-        shm.open();
-        shm.map();
-        
-        Data* data = shm.getAs<Data>();
-        std::cout << "Child read: ID=" << data->id 
-                  << ", Message=" << data->message << std::endl;
-        
-        shm.unmap();
-        shm.close();
-        exit(0);
-    } else {
-        // Parent - writer
-        SharedMemory shm(shmName, shmSize);
-        shm.create();
-        shm.map();
-        
-        Data* data = shm.getAs<Data>();
-        data->id = 42;
-        strcpy(data->message, "Hello via shared memory!");
-        
-        waitpid(pid, nullptr, 0);
-        
-        shm.unmap();
-        shm.close();
-        shm.unlink();
-    }
-    
-    return 0;
-}
-```
-
-### Example 5: Producer-Consumer with Semaphore
-
-```cpp
-#include "ThreadPool.h"
-#include "Synchronization.h"
-#include <vector>
-
-int main() {
-    const int bufferSize = 5;
-    std::vector<int> buffer(bufferSize);
-    int writePos = 0, readPos = 0;
-    
-    Semaphore empty(bufferSize);  // Empty slots
-    Semaphore full(0);            // Full slots
-    SafeMutex mutex;
-    
-    ThreadPool pool(2);
-    
-    // Producer
-    auto producer = pool.enqueue([&]() {
-        for (int i = 0; i < 20; ++i) {
-            empty.wait();  // Wait for empty slot
-            
-            {
-                SafeLockGuard lock(mutex);
-                buffer[writePos] = i;
-                writePos = (writePos + 1) % bufferSize;
-            }
-            
-            full.post();  // Signal full slot
-        }
-    });
-    
-    // Consumer
-    auto consumer = pool.enqueue([&]() {
-        for (int i = 0; i < 20; ++i) {
-            full.wait();  // Wait for full slot
-            
-            int item;
-            {
-                SafeLockGuard lock(mutex);
-                item = buffer[readPos];
-                readPos = (readPos + 1) % bufferSize;
-            }
-            
-            std::cout << "Consumed: " << item << std::endl;
-            empty.post();  // Signal empty slot
-        }
-    });
-    
-    producer.get();
-    consumer.get();
-    
-    return 0;
-}
-```
-
-### Example 6: Reader-Writer Lock
-
-```cpp
-#include "ThreadPool.h"
-#include "Synchronization.h"
-
-int main() {
-    std::string sharedData = "Initial data";
-    RWLock rwLock;
-    ThreadPool pool(6);
-    
-    std::vector<std::future<void>> futures;
-    
-    // Create 4 reader threads
-    for (int i = 0; i < 4; ++i) {
-        futures.push_back(pool.enqueue([&, i]() {
-            rwLock.readLock();
-            std::cout << "Reader " << i << ": " << sharedData << std::endl;
-            rwLock.readUnlock();
-        }));
-    }
-    
-    // Create 2 writer threads
-    for (int i = 0; i < 2; ++i) {
-        futures.push_back(pool.enqueue([&, i]() {
-            rwLock.writeLock();
-            sharedData = "Updated by writer " + std::to_string(i);
-            std::cout << "Writer " << i << " updated data" << std::endl;
-            rwLock.writeUnlock();
-        }));
-    }
-    
-    // Wait for all
-    for (auto& f : futures) {
-        f.get();
-    }
-    
-    return 0;
-}
-```
-
-### Example 7: Deadlock Prevention
-
-```cpp
-#include "Synchronization.h"
-#include "ThreadPool.h"
-
-int main() {
-    SafeMutex resourceA("Resource_A");
-    SafeMutex resourceB("Resource_B");
-    
-    ThreadPool pool(2);
-    
-    // Thread 1: Lock A then B
-    auto t1 = pool.enqueue([&]() {
-        if (resourceA.lock()) {
-            std::cout << "Thread 1 locked A" << std::endl;
-            
-            // Try to lock B with timeout
-            if (resourceB.lock(std::chrono::milliseconds(2000))) {
-                std::cout << "Thread 1 locked B" << std::endl;
-                resourceB.unlock();
-            } else {
-                std::cout << "Thread 1 timeout on B (deadlock avoided!)" << std::endl;
-            }
-            
-            resourceA.unlock();
-        }
-    });
-    
-    // Thread 2: Lock B then A
-    auto t2 = pool.enqueue([&]() {
-        if (resourceB.lock()) {
-            std::cout << "Thread 2 locked B" << std::endl;
-            
-            if (resourceA.lock(std::chrono::milliseconds(2000))) {
-                std::cout << "Thread 2 locked A" << std::endl;
-                resourceA.unlock();
-            } else {
-                std::cout << "Thread 2 timeout on A (deadlock avoided!)" << std::endl;
-            }
-            
-            resourceB.unlock();
-        }
-    });
-    
-    t1.get();
-    t2.get();
-    
-    return 0;
-}
-```
+[Keep all your existing examples - they are excellent and comprehensive]
 
 ## 🎓 Learning Objectives
 
-This project demonstrates understanding of:
-
-### 1. Process Management
-- ✅ Process creation using `fork()`
-- ✅ Process lifecycle and state transitions
-- ✅ Parent-child relationships
-- ✅ Process termination and exit codes
-- ✅ Waiting for child processes (`waitpid`)
-- ✅ Signal handling (`SIGTERM`, `SIGKILL`)
-
-### 2. Thread Management
-- ✅ Thread creation and lifecycle
-- ✅ Thread pooling for resource efficiency
-- ✅ Task scheduling and distribution
-- ✅ Thread state monitoring
-- ✅ Graceful shutdown procedures
-
-### 3. Concurrency Control
-- ✅ **Race Conditions**: Understanding and prevention
-- ✅ **Critical Sections**: Protection with mutexes
-- ✅ **Deadlocks**: Detection and prevention strategies
-- ✅ **Synchronization**: Proper use of primitives
-
-### 4. Inter-Process Communication
-- ✅ **Pipes**: Unidirectional data flow
-- ✅ **Named Pipes**: Process-independent communication
-- ✅ **Shared Memory**: High-performance data sharing
-- ✅ **Message Queues**: Structured message passing
-
-### 5. Resource Management
-- ✅ RAII (Resource Acquisition Is Initialization)
-- ✅ Proper cleanup and resource deallocation
-- ✅ Memory management best practices
-- ✅ File descriptor management
+[Keep this section as is - very well structured]
 
 ## 🔬 Core Concepts Demonstrated
 
-### Race Conditions
-
-**Problem:**
-```cpp
-int counter = 0;
-
-// Thread 1
-counter++;
-
-// Thread 2
-counter++;
-
-// Expected: 2
-// Actual: 1 or 2 (race condition!)
-```
-
-**Solution:**
-```cpp
-SafeMutex mutex;
-int counter = 0;
-
-// Thread 1
-{
-    SafeLockGuard lock(mutex);
-    counter++;
-}
-
-// Thread 2
-{
-    SafeLockGuard lock(mutex);
-    counter++;
-}
-
-// Result: Always 2 (correct!)
-```
-
-### Deadlock Scenario
-
-**Problem:**
-```cpp
-// Thread 1          // Thread 2
-lock(A)              lock(B)
-lock(B)              lock(A)  // DEADLOCK!
-```
-
-**Solution with SafeMutex:**
-```cpp
-// Thread 1
-if (mutexA.lock(timeout)) {
-    if (mutexB.lock(timeout)) {
-        // Critical section
-        mutexB.unlock();
-    } else {
-        // Timeout - avoid deadlock
-    }
-    mutexA.unlock();
-}
-```
-
-### Producer-Consumer Pattern
-
-```
-Producer                 Buffer              Consumer
-   |                      [ ]                   |
-   |--[produce item]----> [X]                   |
-   |                      [X]                   |
-   |                      [X] <--[consume]------|
-   |                      [ ]                   |
-```
-
-Synchronized with semaphores:
-- `empty`: Counts available slots
-- `full`: Counts filled slots
-- `mutex`: Protects buffer access
+[Keep this section as is]
 
 ## 📖 API Reference
 
-### ProcessManager
+For complete API documentation with detailed descriptions, see: [https://swilltec.github.io/ProcessThreadManager/](https://swilltec.github.io/ProcessThreadManager/)
 
-```cpp
-class ProcessManager {
-public:
-    // Create a new process
-    pid_t createProcess(const std::string& name, std::function<int()> task);
-    
-    // Wait for specific process
-    bool waitForProcess(pid_t pid, int* status = nullptr);
-    
-    // Terminate process
-    bool terminateProcess(pid_t pid, int signal = SIGTERM);
-    bool killProcess(pid_t pid);
-    
-    // Query state
-    ProcessState getProcessState(pid_t pid);
-    std::vector<pid_t> getAllProcesses() const;
-    
-    // Bulk operations
-    void waitForAll();
-    void terminateAll();
-    
-    // Information
-    void printProcessInfo(pid_t pid);
-    void printAllProcesses();
-};
-```
-
-### ThreadPool
-
-```cpp
-class ThreadPool {
-public:
-    // Constructor
-    explicit ThreadPool(size_t numThreads);
-    
-    // Submit task
-    template<typename F, typename... Args>
-    auto enqueue(F&& f, Args&&... args) 
-        -> std::future<typename std::result_of<F(Args...)>::type>;
-    
-    // Pool information
-    size_t getPoolSize() const;
-    size_t getActiveTasks() const;
-    size_t getQueuedTasks();
-    
-    // Management
-    void waitForCompletion();
-    void shutdown();
-    
-    // Monitoring
-    ThreadState getThreadState(size_t id);
-    void printThreadStates();
-};
-```
-
-### IPC Classes
-
-```cpp
-// Unnamed Pipe
-class Pipe {
-public:
-    Pipe();
-    
-    int getReadFd() const;
-    int getWriteFd() const;
-    
-    void closeRead();
-    void closeWrite();
-    void close();
-    
-    ssize_t write(const void* data, size_t size);
-    ssize_t read(void* buffer, size_t size);
-    
-    bool writeString(const std::string& str);
-    std::string readString(size_t maxSize = 4096);
-};
-
-// Named Pipe (FIFO)
-class NamedPipe {
-public:
-    NamedPipe(const std::string& pipePath);
-    
-    bool create(mode_t mode = 0666);
-    bool openForReading();
-    bool openForWriting();
-    void close();
-    bool remove();
-    
-    ssize_t write(const void* data, size_t size);
-    ssize_t read(void* buffer, size_t size);
-    
-    bool writeString(const std::string& str);
-    std::string readString(size_t maxSize = 4096);
-};
-
-// Shared Memory
-class SharedMemory {
-public:
-    SharedMemory(const std::string& shmName, size_t shmSize);
-    
-    bool create(mode_t mode = 0666);
-    bool open();
-    bool map(int prot = PROT_READ | PROT_WRITE);
-    void unmap();
-    void close();
-    bool unlink();
-    
-    void* getAddress() const;
-    size_t getSize() const;
-    
-    bool writeData(const void* data, size_t dataSize, size_t offset = 0);
-    bool readData(void* buffer, size_t dataSize, size_t offset = 0);
-    
-    template<typename T>
-    T* getAs();
-};
-```
-
-### Synchronization Primitives
-
-```cpp
-// SafeMutex with deadlock detection
-class SafeMutex {
-public:
-    explicit SafeMutex(const std::string& name = "");
-    
-    bool lock(std::chrono::milliseconds timeout = std::chrono::milliseconds(5000));
-    bool tryLock();
-    void unlock();
-    
-    bool isLocked() const;
-    std::thread::id getOwner() const;
-};
-
-// RAII Lock Guard
-class SafeLockGuard {
-public:
-    explicit SafeLockGuard(SafeMutex& m);
-    ~SafeLockGuard();
-};
-
-// Semaphore
-class Semaphore {
-public:
-    explicit Semaphore(unsigned int value = 0, const std::string& name = "");
-    
-    bool wait();
-    bool tryWait();
-    bool timedWait(std::chrono::milliseconds timeout);
-    bool post();
-    
-    int getValue();
-};
-
-// Reader-Writer Lock
-class RWLock {
-public:
-    RWLock();
-    
-    void readLock();
-    void readUnlock();
-    void writeLock();
-    void writeUnlock();
-};
-
-// Barrier
-class Barrier {
-public:
-    explicit Barrier(size_t numThreads);
-    
-    void wait();
-    void reset();
-};
-```
+[Keep the API reference section as is]
 
 ## 🔒 Thread Safety
 
-### Thread-Safe Components
-- ✅ `ThreadPool` - All public methods are thread-safe
-- ✅ `SafeMutex` - Inherently thread-safe
-- ✅ `Semaphore` - Thread-safe operations
-- ✅ `RWLock` - Thread-safe read/write operations
-- ✅ `Barrier` - Thread-safe synchronization
-
-### Not Thread-Safe (Use Mutexes)
-- ❌ `ProcessManager` - Not designed for multi-threaded access
-- ❌ `Pipe` / `NamedPipe` - Use external synchronization if shared
-- ❌ `SharedMemory` - Data access needs external synchronization
-
-### Best Practices
-
-```cpp
-// ✅ GOOD: Protect shared data
-SafeMutex mutex;
-int sharedCounter = 0;
-
-void incrementCounter() {
-    SafeLockGuard lock(mutex);
-    sharedCounter++;
-}
-
-// ❌ BAD: Unprotected access
-int sharedCounter = 0;
-
-void incrementCounter() {
-    sharedCounter++;  // RACE CONDITION!
-}
-```
+[Keep this section as is]
 
 ## ⚡ Performance Considerations
 
-### Thread Pool Sizing
-
-```cpp
-// CPU-bound tasks
-ThreadPool pool(std::thread::hardware_concurrency());
-
-// I/O-bound tasks
-ThreadPool pool(std::thread::hardware_concurrency() * 2);
-
-// Mixed workload
-ThreadPool pool(std::thread::hardware_concurrency() + 2);
-```
-
-### IPC Performance Comparison
-
-| Mechanism | Latency | Throughput | Use Case |
-|-----------|---------|------------|----------|
-| **Shared Memory** | ~100ns | Very High | Large data, frequent access |
-| **Unnamed Pipe** | ~1µs | High | Parent-child, moderate data |
-| **Named Pipe** | ~5µs | Medium | Any processes, moderate data |
-| **Message Queue** | ~10µs | Medium | Structured messages |
-
-### Lock Granularity
-
-```cpp
-// ✅ GOOD: Fine-grained locking
-{
-    SafeLockGuard lock(mutex);
-    sharedData++;  // Quick operation
-}
-
-// ❌ BAD: Coarse-grained locking
-{
-    SafeLockGuard lock(mutex);
-    complexCalculation();  // Locks for too long!
-    sharedData++;
-}
-```
+[Keep this section as is]
 
 ## 🔧 Troubleshooting
 
-### Common Issues
-
-#### 1. Compilation Errors
-
-**Error:** `error: 'thread' in namespace 'std' does not name a type`
-
-**Solution:**
-```bash
-# Ensure you're using C++17 and pthread flag
-g++ -std=c++17 -pthread main.cpp -o program
-```
-
-**Error:** `undefined reference to 'pthread_create'`
-
-**Solution:**
-```bash
-# Link pthread library
-g++ main.cpp -pthread -o program
-```
-
-#### 2. Runtime Issues
-
-**Error:** Shared memory permission denied
-
-**Solution:**
-```bash
-# Check shared memory permissions
-ls -la /dev/shm/
-
-# Clean up old shared memory segments
-rm /dev/shm/test_shm
-```
-
-**Error:** Too many open files
-
-**Solution:**
-```bash
-# Increase file descriptor limit
-ulimit -n 4096
-
-# Or permanently in /etc/security/limits.conf
-* soft nofile 4096
-* hard nofile 8192
-```
-
-#### 3. Deadlock Detection
-
-If program hangs:
-```bash
-# Get process ID
-ps aux | grep test_manager
-
-# Check thread states
-gdb -p <PID>
-(gdb) info threads
-(gdb) thread apply all bt
-
-# Or use system tools
-# FreeBSD
-procstat -k <PID>
-
-# Linux
-pstack <PID>
-```
-
-### Debugging Tips
-
-```cpp
-// Enable verbose output
-#define DEBUG_MODE 1
-
-#if DEBUG_MODE
-    std::cout << "[DEBUG] Thread " << std::this_thread::get_id() 
-              << " acquired lock" << std::endl;
-#endif
-```
-
-### Memory Leaks
-
-```bash
-# Use Valgrind (Linux)
-valgrind --leak-check=full ./test_manager
-
-# Or Address Sanitizer
-g++ -fsanitize=address -g main.cpp -o program
-./program
-```
+[Keep this section as is]
 
 ## 🤝 Contributing
+
+Contributions are welcome! Please follow these guidelines:
 
 ### Code Style
 
 - Use 4 spaces for indentation
-- Opening braces on same line
-- Meaningful variable names
-- Comment complex logic
+- Follow existing code formatting
+- Add Doxygen comments for all public APIs
+- Write clear commit messages
 
-```cpp
-// Good
-void processData(const std::vector<int>& data) {
-    for (const auto& item : data) {
-        // Process each item
-    }
-}
+### Submitting Changes
 
-// Bad
-void pd(const std::vector<int>& d) {
-    for(auto i:d){processItem(i);}
-}
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Building Documentation Locally
+
+```bash
+# Generate documentation
+make docs
+
+# View documentation
+make docs-open
 ```
-
-### Adding New Features
-
-1. Create header in `include/`
-2. Implement in `src/`
-3. Add tests in `test/main.cpp`
-4. Update `CMakeLists.txt`
-5. Document in README
 
 ## 📝 License
 
-This project is created for educational purposes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-**Use for:**
-- ✅ Learning operating system concepts
-- ✅ Academic assignments
-- ✅ Personal projects
-- ✅ Teaching materials
-
-**Restrictions:**
-- ❌ Do not submit as your own work without understanding
-- ❌ Commercial use without proper licensing
-
-## 👨‍💻 Author
-
-Created as a comprehensive demonstration of process and thread management concepts for FreeBSD/Unix systems.
 
 ## 📚 Additional Resources
 
+### Documentation
+- [Full API Documentation](https://swilltec.github.io/ProcessThreadManager/) - Complete reference with examples
+- [FreeBSD Handbook](https://docs.freebsd.org/en/books/handbook/) - Operating system guide
+- [POSIX Threads Programming](https://hpc-tutorials.llnl.gov/posix/) - POSIX threads tutorial
+- [Linux man pages](https://man7.org/linux/man-pages/) - System call reference
+
 ### Recommended Reading
-- **"Operating System Concepts" by Silberschatz, Galvin, Gagne** - Chapter 3 (Processes), Chapter 4 (Threads)
-- **"UNIX Network Programming" by W. Richard Stevens** - IPC mechanisms
-- **"C++ Concurrency in Action" by Anthony Williams** - Modern C++ threading
+- **"Operating System Concepts" by Silberschatz, Galvin, Gagne**
+    - Chapter 3: Processes
+    - Chapter 4: Threads
+    - Chapter 5: Process Synchronization
+    - Chapter 6: Deadlocks
+
+- **"UNIX Network Programming" by W. Richard Stevens**
+    - Volume 2: Interprocess Communications
+
+- **"C++ Concurrency in Action" by Anthony Williams**
+    - Modern C++ threading and synchronization
 
 ### Online Resources
-- [POSIX Threads Programming](https://computing.llnl.gov/tutorials/pthreads/)
-- [FreeBSD Handbook - Processes](https://docs.freebsd.org/en/books/handbook/)
-- [Linux man pages](https://man7.org/linux/man-pages/)
+- [C++20 Reference](https://en.cppreference.com/w/cpp/20)
+- [POSIX.1-2017](https://pubs.opengroup.org/onlinepubs/9699919799/)
+- [FreeBSD Architecture Handbook](https://docs.freebsd.org/en/books/arch-handbook/)
+- [concurrency-ts Reference](https://en.cppreference.com/w/cpp/experimental/concurrency)
 
 ### Related Topics
-- Scheduling algorithms
-- Memory management
-- File systems
-- Network programming
+- Process scheduling algorithms
+- Memory management and virtual memory
+- File systems and I/O
+- Network programming with sockets
+- Real-time operating systems
 
 ---
 
 ## 📞 Support
 
-For questions or issues:
-1. Check the [Troubleshooting](#troubleshooting) section
-2. Review example code in `test/main.cpp`
-3. Consult FreeBSD/POSIX documentation
+For questions, issues, or feature requests:
+
+1. Check the [Documentation](https://swilltec.github.io/ProcessThreadManager/)
+2. Review the [Troubleshooting](#troubleshooting) section
+3. Search existing [Issues](https://github.com/swilltec/ProcessThreadManager/issues)
+4. Open a new issue if needed
 
 ---
 
-**Last Updated:** December 2025  
-**Version:** 1.0.0
+**Last Updated:** December 12, 2025  
+**Version:** 1.0.0  
+**Documentation:** https://swilltec.github.io/ProcessThreadManager/
+
+---
+
+Made with ❤️ for Operating Systems education
